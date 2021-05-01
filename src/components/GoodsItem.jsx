@@ -1,5 +1,5 @@
 import React, {} from "react";
-
+import s from "./GoodsItem.module.sass"
 export function GoodsItem(props) {
     const {
         id,
@@ -10,10 +10,10 @@ export function GoodsItem(props) {
     } = props
     return (
         <>
-        <div id={id}>
-            <div>{name}</div>
+        <div className={s.itemF} id={id}>
+            <div className={s.nameF}>{name}</div>
 
-            <img src={full_background} alt={name}/>
+            <img className={s.imgF} src={full_background} alt={name}/>
             <p>{description}</p>
             <button>Buy</button>
             <span>{price}</span>

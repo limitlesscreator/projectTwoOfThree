@@ -1,17 +1,22 @@
 import React, {} from "react";
+import {GoodsItem} from "./GoodsItem";
+import s from './GoodsList.module.sass'
 
-export function GoodsList(props){
+export function GoodsList(props) {
     const {goods = []} = props
-    if (!goods.length){
-        return(
+    console.log(goods)
+    if (!goods.length) {
+        return (
             <>
                 Nothing here
             </>
         )
     }
-    return(
+    return (
         <>
-
+            <div className={s.itemsF}>
+                {goods.map((item) => (<GoodsItem key={item.id} {...item}/>))}
+            </div>
         </>
     )
 
