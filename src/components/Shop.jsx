@@ -4,11 +4,43 @@ import {GoodsList} from "./GoodsList";
 import {API_KEY, API_URL} from "../config";
 import {Cart} from "./Cart";
 import s from "./Shop.module.sass"
+import {BasketList} from "./BasketList";
 
 export function Shop() {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true)
     const [order, setOrder] = useState([])
+    const [isBasketShow, setBasketShow] = useState(false)
+
+    const addToBasket = (item) => {
+        const itemIndex = order.findIndex(orderItem => orderItem.id === item.id) //если findIndex ничего не находит, то возвращает -1
+        if(itemIndex < 0){
+            const newItem = {
+                ...item,
+                quantity: 1
+            }
+            setOrder([...order,newItem])
+        }
+        else {
+            const newOrder = order.map((orderItem, index) => {
+                if (index === itemIndex) {
+                    return {
+                        ...orderItem,
+                        quantity: orderItem.quantity + 1
+                    }
+                } else {
+                    return orderItem;
+                }
+            })
+            setOrder(newOrder)
+        }
+
+        // event loop
+    }
+
+    const handleBasketShow = () => {
+        setBasketShow(!isBasketShow)
+    }
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -21,15 +53,19 @@ export function Shop() {
                 console.log(data)
                 data.featured && setGoods(data.featured);
                 setLoading(false)
+                console.log('finish')
             })
     }, []);
 
     return (
         <>
             <div className={s.positionFromCart}>
-                <Cart quantity={order.length}   />
-                {loading ? <Preloader/> : <GoodsList goods={goods}/>}
+                <Cart orders={order.length} handleBasketShow={handleBasketShow}/>
+                {loading ? <Preloader/> : <GoodsList goods={goods} addToBasket={addToBasket}/>}
             </div>
+            {
+                isBasketShow && <BasketList order={order} handleBasketShow={handleBasketShow} />
+            }
         </>
     )
 }

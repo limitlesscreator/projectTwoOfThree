@@ -1,12 +1,12 @@
 import React, {} from "react";
 import s from "./Cart.module.sass"
 export function Cart(props){
-    const {quantity = 0} = props
+    const {orders = 0,handleBasketShow} = props
     return(
         <>
-        <div className={s.cartPosition}>
+        <div className={s.cartPosition} onClick={handleBasketShow}>
             <i className="fas fa-shopping-basket"></i>
-            {quantity ? <span className={s.cartQuantity}>{quantity}</span> : null}
+            {orders ? <span className={s.cartQuantity}>{orders}</span> : null}
         </div>
         </>
     )

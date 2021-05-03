@@ -16,7 +16,7 @@ export function GoodsList(props) {
     return (
         <>
             <div className={s.itemsF}>
-                {goods.map((item) => (<GoodsItem key={item.id} {...item}/>))}
+                {goods.map((item) => (<GoodsItem key={item.id} {...item} addToBasket={props.addToBasket}/>))}
             </div>
         </>
     )
