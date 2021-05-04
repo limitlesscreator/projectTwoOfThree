@@ -16,18 +16,25 @@
   position: absolute
   font-size: 30px
   padding: 0 20px
-  color: #daecff
+  color: #0a2c53
   background: #6daee7
   border-radius: 40px 10px 0 0
 
 
 .mainList span
+  z-index: -1
   position: absolute
   right: 0
   top: -58px
   font-size: 50px
   cursor: pointer
   color: #6daee7
+  transition: 0.3s
+
+
+  &:hover
+    transition: 0.3s
+    color: red
 
 .allPrice
   border-top: solid 1px white
@@ -43,14 +50,13 @@
   align-items: center
   display: flex
   justify-content: center
-  opacity: 0.6
-  color: #3f0085
+  color: #0a2c53
 
 .allPrice i
   margin-left: 5px
   font-size: 28px
   padding-top: 5px
-  color: #3f0085
+  color: #0a2c53
 
 .basketEmpty
   position: absolute

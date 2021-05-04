@@ -3,7 +3,7 @@ import {BasketItem} from "./BasketItem";
 import s from './BasketList.module.sass'
 
 export function BasketList(props) {
-    const {order,handleBasketShow} = props
+    const {order,handleBasketShow,removeFromBasket} = props
 
     const totalPrice = order.reduce((sum, el) => {
         console.log(sum)
@@ -16,7 +16,7 @@ export function BasketList(props) {
             <div className={s.basket}>Корзина</div>
             {
                 order.length ? order.map(item => (
-                    <BasketItem key={item.id} {...item}/>
+                    <BasketItem key={item.id} {...item} removeFromBasket={removeFromBasket}/>
                 )) : <div className={s.basketEmpty}>Корзина пуста</div>
             }
             {order.length ? <div className={s.allPrice}>{totalPrice} <i className={'fas fa-ruble-sign'}></i></div> : null}
