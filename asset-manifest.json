@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/projectTwoOfThree/static/css/main.f58a94de.chunk.css",
+    "main.js": "/projectTwoOfThree/static/js/main.4e6a79f8.chunk.js",
+    "main.js.map": "/projectTwoOfThree/static/js/main.4e6a79f8.chunk.js.map",
+    "runtime-main.js": "/projectTwoOfThree/static/js/runtime-main.38a49b46.js",
+    "runtime-main.js.map": "/projectTwoOfThree/static/js/runtime-main.38a49b46.js.map",
+    "static/css/2.97503911.chunk.css": "/projectTwoOfThree/static/css/2.97503911.chunk.css",
+    "static/js/2.48edcde9.chunk.js": "/projectTwoOfThree/static/js/2.48edcde9.chunk.js",
+    "static/js/2.48edcde9.chunk.js.map": "/projectTwoOfThree/static/js/2.48edcde9.chunk.js.map",
+    "static/js/3.b1b8cd3c.chunk.js": "/projectTwoOfThree/static/js/3.b1b8cd3c.chunk.js",
+    "static/js/3.b1b8cd3c.chunk.js.map": "/projectTwoOfThree/static/js/3.b1b8cd3c.chunk.js.map",
+    "index.html": "/projectTwoOfThree/index.html",
+    "static/css/2.97503911.chunk.css.map": "/projectTwoOfThree/static/css/2.97503911.chunk.css.map",
+    "static/css/main.f58a94de.chunk.css.map": "/projectTwoOfThree/static/css/main.f58a94de.chunk.css.map",
+    "static/js/2.48edcde9.chunk.js.LICENSE.txt": "/projectTwoOfThree/static/js/2.48edcde9.chunk.js.LICENSE.txt",
+    "static/media/stub.06e2eaab.png": "/projectTwoOfThree/static/media/stub.06e2eaab.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.38a49b46.js",
+    "static/css/2.97503911.chunk.css",
+    "static/js/2.48edcde9.chunk.js",
+    "static/css/main.f58a94de.chunk.css",
+    "static/js/main.4e6a79f8.chunk.js"
+  ]
+}
