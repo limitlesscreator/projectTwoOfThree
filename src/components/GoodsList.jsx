@@ -1,11 +1,11 @@
 import React, {} from "react";
 import {GoodsItem} from "./GoodsItem";
 import s from './GoodsList.module.sass'
-import {Cart} from "./Cart";
 
 export function GoodsList(props) {
     const {goods = []} = props
     console.log(goods)
+
     if (!goods.length) {
         return (
             <>
@@ -13,6 +13,8 @@ export function GoodsList(props) {
             </>
         )
     }
+
+
     return (
         <>
             <div className={s.itemsF}>

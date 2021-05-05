@@ -5,23 +5,29 @@ import {API_KEY, API_URL} from "../config";
 import {Cart} from "./Cart";
 import s from "./Shop.module.sass"
 import {BasketList} from "./BasketList";
+// import {Alert} from "./Alert";
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
 
 export function Shop() {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true)
     const [order, setOrder] = useState([])
     const [isBasketShow, setBasketShow] = useState(false)
+    // const [alertName, setAlertName] = useState('')
 
     const addToBasket = (item) => {
+        toast(`${item.name} добавлен в коризну`,{autoClose: 3000})
         const itemIndex = order.findIndex(orderItem => orderItem.id === item.id) //если findIndex ничего не находит, то возвращает -1
-        if(itemIndex < 0){
+        if (itemIndex < 0) {
             const newItem = {
                 ...item,
                 quantity: 1
             }
-            setOrder([...order,newItem])
-        }
-        else {
+            setOrder([...order, newItem])
+        } else {
             const newOrder = order.map((orderItem, index) => {
                 if (index === itemIndex) {
                     return {
@@ -34,6 +40,7 @@ export function Shop() {
             })
             setOrder(newOrder)
         }
+        // setAlertName(item.name)
 
         // event loop
     }
@@ -48,6 +55,41 @@ export function Shop() {
         console.log('remove')
     }
 
+    const addQuantity = (idItem) => {
+        console.log(idItem)
+        const newOrder = order.map((el) => {
+            if (el.id === idItem) {
+                const newQuantity = el.quantity + 1
+                return {
+                    ...el,
+                    quantity: newQuantity
+                }
+            } else {
+                return el
+            }
+        })
+        setOrder(newOrder)
+    }
+    const removeQuantity = (idItem) => {
+        const newOrder = order.map(el => {
+            if (el.id === idItem) {
+                const newQuantity = el.quantity - 1
+                return {
+                    ...el,
+                    quantity: newQuantity >= 0 ? newQuantity : 0
+                }
+            } else {
+                return (
+                    el
+                )
+            }
+        })
+        setOrder(newOrder)
+    }
+
+    // const closeAlert = () => {
+    //     setAlertName('')
+    // }
     useEffect(function getGoods() {
         fetch(API_URL, {
             headers: {
@@ -70,8 +112,11 @@ export function Shop() {
                 {loading ? <Preloader/> : <GoodsList goods={goods} addToBasket={addToBasket}/>}
             </div>
             {
-                isBasketShow && <BasketList order={order} handleBasketShow={handleBasketShow} removeFromBasket={removeFromBasket} />
+                isBasketShow &&
+                <BasketList order={order} handleBasketShow={handleBasketShow} removeFromBasket={removeFromBasket}
+                            addQuantity={addQuantity} removeQuantity={removeQuantity}/>
             }
+            {/*{alertName && <Alert name={alertName} closeAlert={closeAlert}/>}*/}
         </>
     )
 }
